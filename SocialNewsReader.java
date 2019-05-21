@@ -43,48 +43,48 @@ public class SocialNewsReader  {
     private final TagType type;  
     
     public EntityPosition(Integer from_value, Integer to_value, TagType type_value) {
-			from = from_value;  
-			to = to_value;
-			type = type_value;
+        from = from_value;  
+        to = to_value;
+        type = type_value;
     }
      
     public Integer getFrom(){
-			return from;
+        return from;
     }
     public Integer getTo(){
-			return to;
+        return to;
     }
     public TagType getType(){
-			return type;
+        return type;
     }
     
     public int compareTo(EntityPosition compareEntity) {
-			int comparefrom = ((EntityPosition) compareEntity).from; 
-			return this.from - comparefrom;
-		}
+        int comparefrom = ((EntityPosition) compareEntity).from; 
+        return this.from - comparefrom;
+    }
 	
     public static Comparator<EntityPosition> EntityPositionComparator = new Comparator<EntityPosition>() {
-			public int compare(EntityPosition entity1, EntityPosition entity2) {
-				return (entity1.from).compareTo(entity2.from);
-			}
-		};
+        public int compare(EntityPosition entity1, EntityPosition entity2) {
+            return (entity1.from).compareTo(entity2.from);
+        }
+    };
   };
     
     public class Tag { 
 		protected String tag_prefix1, tag_prefix2, tag_suffix;
 		public String appendTag(EntityPosition post, String text, int shift){
-				return "";
+            return "";
 		}
 
 		public Integer getShift(String word){
-				return 0;
+            return 0;
 		}
     } 
     
     public class Entity extends Tag{
 		public Entity(String tag_prefix_value1, String tag_suffix_value) {
-			tag_prefix1 = tag_prefix_value1;
-			tag_suffix = tag_suffix_value;
+            tag_prefix1 = tag_prefix_value1;
+            tag_suffix = tag_suffix_value;
 		} 
 
 		public String appendTag(EntityPosition post, String text, int shift){
