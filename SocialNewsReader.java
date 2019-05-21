@@ -68,7 +68,7 @@ public class SocialNewsReader  {
             return (entity1.from).compareTo(entity2.from);
         }
     };
-  };
+  }
     
     public class Tag { 
 	protected String tag_prefix1, tag_prefix2, tag_suffix;
@@ -98,7 +98,7 @@ public class SocialNewsReader  {
 	public Integer getShift(String word){
 		return tag_prefix1.length() + tag_suffix.length();
 	}
-    };
+    }
     
     public class Twitter_username extends Tag{
 	public Twitter_username(String tag_prefix_value1, String tag_prefix_value2, String tag_suffix_value) {
@@ -118,7 +118,7 @@ public class SocialNewsReader  {
 	public Integer getShift(String word){
 		return tag_prefix1.length() + tag_prefix2.length() + tag_suffix.length() + word.length()-1;
 		}
-    };
+    }
     
     public class Link extends Tag{
 	public Link(String tag_prefix_value1, String tag_prefix_value2, String tag_suffix_value) {
@@ -138,7 +138,7 @@ public class SocialNewsReader  {
 	public Integer getShift(String word){
 		return tag_prefix1.length() + tag_prefix2.length() + tag_suffix.length() + word.length();
 		}
-    };
+    }
     
     Entity entity = new Entity("<strong>", "</strong>" );
     Twitter_username twitter_username = new Twitter_username("<ahref=\"http://twitter.com/", "\">", "</a>");
