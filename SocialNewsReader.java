@@ -71,73 +71,73 @@ public class SocialNewsReader  {
   };
     
     public class Tag { 
-		protected String tag_prefix1, tag_prefix2, tag_suffix;
-		public String appendTag(EntityPosition post, String text, int shift){
-            return "";
-		}
+	protected String tag_prefix1, tag_prefix2, tag_suffix;
+	public String appendTag(EntityPosition post, String text, int shift){
+	return "";
+	}
 
-		public Integer getShift(String word){
-            return 0;
-		}
+	public Integer getShift(String word){
+	return 0;
+	}
     } 
     
     public class Entity extends Tag{
-		public Entity(String tag_prefix_value1, String tag_suffix_value) {
+	public Entity(String tag_prefix_value1, String tag_suffix_value) {
             tag_prefix1 = tag_prefix_value1;
             tag_suffix = tag_suffix_value;
-		} 
+	} 
 
-		public String appendTag(EntityPosition post, String text, int shift){
-			Integer start =  shift + post.getFrom();
-			Integer end =  shift + post.getTo();
-			String tag_prefix = tag_prefix1;
-			String formattedPost= text.substring( 0, start ) + tag_prefix + text.substring( start, end ) + tag_suffix + text.substring( end );
-			return formattedPost;
-		}
+	public String appendTag(EntityPosition post, String text, int shift){
+		Integer start =  shift + post.getFrom();
+		Integer end =  shift + post.getTo();
+		String tag_prefix = tag_prefix1;
+		String formattedPost= text.substring( 0, start ) + tag_prefix + text.substring( start, end ) + tag_suffix + text.substring( end );
+		return formattedPost;
+	}
 
-		public Integer getShift(String word){
-			return tag_prefix1.length() + tag_suffix.length();
-		}
+	public Integer getShift(String word){
+		return tag_prefix1.length() + tag_suffix.length();
+	}
     };
     
     public class Twitter_username extends Tag{
-		public Twitter_username(String tag_prefix_value1, String tag_prefix_value2, String tag_suffix_value) {
-			tag_prefix1 = tag_prefix_value1;
-			tag_prefix2 = tag_prefix_value2;
-			tag_suffix = tag_suffix_value;
-		} 
+	public Twitter_username(String tag_prefix_value1, String tag_prefix_value2, String tag_suffix_value) {
+		tag_prefix1 = tag_prefix_value1;
+		tag_prefix2 = tag_prefix_value2;
+		tag_suffix = tag_suffix_value;
+	} 
 
-		public String appendTag(EntityPosition post, String text, int shift){
-			Integer start =  shift + post.getFrom() + 1;
-			Integer end =  shift + post.getTo();
-			String tag_prefix = tag_prefix1 + text.substring( start, end ) + tag_prefix2;
-			String formattedPost= text.substring( 0, start ) + tag_prefix + text.substring( start, end ) + tag_suffix + text.substring( end );
-			return formattedPost;
-			}
+	public String appendTag(EntityPosition post, String text, int shift){
+		Integer start =  shift + post.getFrom() + 1;
+		Integer end =  shift + post.getTo();
+		String tag_prefix = tag_prefix1 + text.substring( start, end ) + tag_prefix2;
+		String formattedPost= text.substring( 0, start ) + tag_prefix + text.substring( start, end ) + tag_suffix + text.substring( end );
+		return formattedPost;
+		}
 
-		public Integer getShift(String word){
-			return tag_prefix1.length() + tag_prefix2.length() + tag_suffix.length() + word.length()-1;
-			}
+	public Integer getShift(String word){
+		return tag_prefix1.length() + tag_prefix2.length() + tag_suffix.length() + word.length()-1;
+		}
     };
     
     public class Link extends Tag{
-		public Link(String tag_prefix_value1, String tag_prefix_value2, String tag_suffix_value) {
-			tag_prefix1 = tag_prefix_value1;
-			tag_prefix2 = tag_prefix_value2;
-			tag_suffix = tag_suffix_value;
-		} 
+	public Link(String tag_prefix_value1, String tag_prefix_value2, String tag_suffix_value) {
+		tag_prefix1 = tag_prefix_value1;
+		tag_prefix2 = tag_prefix_value2;
+		tag_suffix = tag_suffix_value;
+	} 
 
-		public String appendTag(EntityPosition post, String text, int shift){
-			Integer start =  shift + post.getFrom();
-			Integer end =  shift + post.getTo();
-			String tag_prefix = tag_prefix1 + text.substring( start, end ) + tag_prefix2;
-			String formattedPost= text.substring( 0, start ) + tag_prefix + text.substring( start, end ) + tag_suffix + text.substring( end );
-			return formattedPost;
+	public String appendTag(EntityPosition post, String text, int shift){
+		Integer start =  shift + post.getFrom();
+		Integer end =  shift + post.getTo();
+		String tag_prefix = tag_prefix1 + text.substring( start, end ) + tag_prefix2;
+		String formattedPost= text.substring( 0, start ) + tag_prefix + text.substring( start, end ) + tag_suffix + text.substring( end );
+		return formattedPost;
+	}
+
+	public Integer getShift(String word){
+		return tag_prefix1.length() + tag_prefix2.length() + tag_suffix.length() + word.length();
 		}
-
-		public Integer getShift(String word){
-			return tag_prefix1.length() + tag_prefix2.length() + tag_suffix.length() + word.length();
-			}
     };
     
     Entity entity = new Entity("<strong>", "</strong>" );
